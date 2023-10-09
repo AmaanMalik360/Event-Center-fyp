@@ -86,7 +86,6 @@ exports.getResponses = async (req,res) => {
         res.status(409).json({message: "Error! Try again later", error});
     } 
 }
-
 exports.getEvents = async (req,res) => {
     try 
     {
@@ -97,4 +96,30 @@ exports.getEvents = async (req,res) => {
     {   
         res.status(409).json({message: "Error! Try again later", error});
     } 
+}
+
+exports.registerResponses = async (req,res) => {
+    try {
+        
+        const {cId, price} = req.body
+        console.log(cId, price);
+
+        const company = await Company.findById(cId)
+        const email = company.email
+
+        const combine = {email:email , price:price}
+        console.log(combine)
+        const event = await Event.findByIdAndUpdate(
+            req.params.id,
+            {$push: {responses: combine}},
+            {new:true}
+            )
+        // event.responses.push(combine)
+        console.log(event);
+
+        res.status(200).json({event, message: "Response Posted Successfully" })
+    } catch (error) {
+        
+        res.status(409).json({message: "Error! Try again later", error});
+    }
 }

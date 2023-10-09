@@ -4,7 +4,7 @@ const {isRequestValidated } = require('../validators/auth')
 const {requireSignin} = require('../common middleware/index');
 
 const { validateAddEventRequest } = require('../validators/event');
-const { addevent, addfood, addDecor, getResponses, getEvents } = require('../controller/event');
+const { addevent, addfood, addDecor, getResponses, getEvents, registerResponses } = require('../controller/event');
 const { validateAddFoodRequest } = require('../validators/addfood');
 const router = express.Router()
 
@@ -18,6 +18,7 @@ router.patch('/event-decor/:id',
  addDecor); 
 
 router.get('/get-responses/:id', getResponses);
+router.patch('/register-response/:id', registerResponses);
 
 router.get('/events', getEvents);
 

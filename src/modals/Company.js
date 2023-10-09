@@ -32,9 +32,7 @@ const companySchema = new mongoose.Schema({
     services: {
         type: Array,
         required: true
-    },
-
-    contactNumber: {type: String},  // unused yet
+    }, // unused yet
     
 
     profilePicture: {type: String}  // unused yet

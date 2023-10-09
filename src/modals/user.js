@@ -26,10 +26,7 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true,
-    },
-
-    contactNumber: {type: String},  // unused yet
-    
+    },   
 
     profilePicture: {type: String}  // unused yet
 
